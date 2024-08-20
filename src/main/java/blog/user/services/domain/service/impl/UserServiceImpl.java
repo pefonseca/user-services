@@ -44,4 +44,15 @@ public class UserServiceImpl implements UserService {
     public UserResponseDTO update(UserUpdateRequestDTO userUpdateRequestDTO, String token) {
         return null;
     }
+
+    /**
+     * @param email
+     * @return
+     */
+    @Override
+    public UserResponseDTO findByEmail(String email) {
+        return repository.findByEmail(email)
+                         .orElseThrow(() -> new RuntimeException("User not found,."))
+                         .toDTO();
+    }
 }
