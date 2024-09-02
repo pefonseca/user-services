@@ -1,4 +1,4 @@
-package blog.user.services.config;
+package blog.user.services.infra.config;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
@@ -28,20 +28,6 @@ public class JwtService {
     public <T> T extractClaim(String token, Function<Claims, T> claimsResolver) {
         final Claims claims = extractAllClaims(token);
         return claimsResolver.apply(claims);
-    }
-
-    public String generateToken(User userDetails) {
-        return generateToken(new HashMap<>(), userDetails);
-    }
-
-    public String generateToken(Map<String, Object> extraClaims, User userDetails) {
-        return Jwts.builder()
-                   .setClaims(extraClaims)
-                   .setSubject(userDetails.getUsername())
-                   .setIssuedAt(new Date(System.currentTimeMillis()))
-                   .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 24))
-                   .signWith(getSignInKey(), SignatureAlgorithm.HS256)
-                   .compact();
     }
 
     public boolean isTokenValid(String token, UserDetails userDetails) {

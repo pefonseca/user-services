@@ -7,8 +7,9 @@ import blog.user.services.api.rest.dto.response.UserResponseDTO;
 public interface UserService {
 
     UserResponseDTO create(UserCreateRequestDTO userCreateRequestDTO);
-    UserResponseDTO findById(String token);
+    UserResponseDTO findById(Long id);
     UserResponseDTO update(UserUpdateRequestDTO userUpdateRequestDTO, String token);
     UserResponseDTO findByEmail(String email);
-
+    void errorAuditLog(String payload);
+    void successAuditLog(String payload);
 }

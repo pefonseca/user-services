@@ -1,4 +1,4 @@
-package blog.user.services.domain.entity;
+package blog.user.services.domain.model.entity;
 
 import blog.user.services.api.rest.dto.response.UserResponseDTO;
 import jakarta.persistence.Entity;
@@ -15,6 +15,7 @@ import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.List;
 
@@ -36,6 +37,8 @@ public class User implements UserDetails {
     private String password;
     private String profilePicture;
     private String coverPicture;
+    private LocalDateTime createDate;
+    private LocalDateTime updateDate;
     private String bio;
     private String city;
     private String maritalStatus;

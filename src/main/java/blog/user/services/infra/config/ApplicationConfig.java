@@ -1,6 +1,6 @@
-package blog.user.services.config;
+package blog.user.services.infra.config;
 
-import blog.user.services.domain.repository.UserRepository;
+import blog.user.services.infra.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

@@ -24,14 +24,14 @@ public class UserController {
 
     private final UserService service;
 
-    @GetMapping("/{token}")
-    public ResponseEntity<UserResponseDTO> findById(@PathVariable(value = "token") String token) {
-        return ResponseEntity.ok(service.findById(token));
-    }
-
     @GetMapping("/find_by_email")
     public ResponseEntity<UserResponseDTO> findByEmail(@RequestParam(value = "email") String email) {
         return ResponseEntity.ok(service.findByEmail(email));
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<UserResponseDTO> findById(@PathVariable(value = "id") Long id) {
+        return ResponseEntity.ok(service.findById(id));
     }
 
     @PostMapping
@@ -46,5 +46,4 @@ public class UserController {
         var userUpdated = service.update(userUpdateRequestDTO, token);
         return ResponseEntity.ok(userUpdated);
     }
-
 }
